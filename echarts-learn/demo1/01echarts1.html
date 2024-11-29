@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/Echarts/echarts-learn/static/js/echarts.min.js"></script>
+    <style>
+        #chart {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chart"></div>
+<script>
+    const chartDom = document.getElementById('chart');
+    // 初始化echarts
+    // const chart = echarts.init(chartDom,'light',);
+    const chart = echarts.init(chartDom,'light',{renderer:{type:'svg'}});
+    chart.setOption({
+        title:{
+            text: "Excharts 案例"
+        },
+        // x轴
+        xAxis:{
+            data:[
+                "食品",
+                "数码",
+                "服饰",
+                "箱包"
+                ]
+        },
+        // y轴
+        yAxis:{},
+        // 数据
+        series:{
+            type:'bar',
+            data:[
+                100,
+                120,
+                90,
+                150
+                ]
+        }
+    })
+
+</script>
+</body>
+</html>

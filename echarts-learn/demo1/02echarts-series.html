@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/Echarts/echarts-learn/static/js/echarts.min.js"></script>
+    <style>
+        #chart {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chart"></div>
+<script>
+    const chartDom = document.getElementById('chart');
+    // 初始化echarts
+    // const chart = echarts.init(chartDom,'light',);
+    // const chart = echarts.init(chartDom,'light',{renderer:{type:'canvas'}});
+    const chart = echarts.init(chartDom,'light',{renderer:{type:'svg'}});
+    chart.setOption({
+        title:{
+            text: "Excharts 多系列案例"
+        },
+        // x轴
+        xAxis:{
+            data:[
+                "一季度",
+                "二季度",
+                "三季度",
+                "四季度",
+                ]
+        },
+        // y轴
+        yAxis:{},
+        // 数据
+        series:[
+            {
+                type:'pie',
+                center:['65%', '60'],
+                radius:35,
+                data: [
+                    {name: "分类1", value: 50},
+                    {name: "分类2", value: 60},
+                    {name: "分类3", value: 55},
+                    {name: "分类4", value: 70},
+                    ]
+            },
+            {
+                type:'line',
+                data: [
+                    96,112,96,123
+                ]
+            },
+            {
+            type:'bar',
+            data:[
+                80,
+                100,
+                75,
+                120
+                ]
+        }
+        ]
+    })
+
+</script>
+</body>
+</html>
