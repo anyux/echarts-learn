@@ -51,9 +51,41 @@
         // 说明
         legend: {
           data: [
-              "分类","折线图","柱状图"
-          ]
+              {
+               //    用于指定具体分类的配置信息
+               //    指定分类名称
+               name:"分类",
+               //    分类形状
+               icon: 'circle',
+               //    文本颜色
+               textStyle: {
+                   color: '#333',
+               }
+              },
+              "折线图","柱状图",
+          ],
+            // 距离左侧位置
+            left: 200,
         },
+        toolbox: {
+          feature: {
+              // 保存图片
+              saveAsImage: {},
+              // 重载数据
+              restore: {},
+              // 区域缩放还原
+              dataZoom: {
+                  yAxisIndex: "none"
+              }
+          }
+        },
+        dataZoom: [
+            {
+                show: true,
+                start: 0,
+                end: 100,
+            }
+        ],
         // 数据
         series: [
             {
