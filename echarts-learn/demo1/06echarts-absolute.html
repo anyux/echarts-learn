@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/Echarts/echarts-learn/static/js/echarts.min.js"></script>
+    <style>
+        #chart {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+    const chartDom = document.getElementById('chart');
+    // 初始化echarts
+    // const chart = echarts.init(chartDom,'light',);
+    // const chart = echarts.init(chartDom,'light',{renderer:{type:'canvas'}});
+    const chart = echarts.init(chartDom, 'light', {renderer: {type: 'svg'}});
+    chart.setOption({
+        dataset: {
+            source: [
+                ['一季度', 100, 79, "分类1", 50],
+                ['二季度', 112, 81, "分类2", 60],
+                ['三季度', 96, 88, "分类3", 55],
+                ['四季度', 123, 72, "分类4", 70],
+            ]
+        },
+        title: {
+            text: "Excharts 多系列案例",
+            // 副标题
+            subtext: "慕课网数据可视化课程"
+        },
+        // x轴
+        xAxis: {
+            data: [
+                "一季度",
+                "二季度",
+                "三季度",
+                "四季度",
+            ]
+        },
+        // y轴
+        yAxis: {},
+        // 说明
+        legend: {
+          data: [
+              {
+               //    用于指定具体分类的配置信息
+               //    指定分类名称
+               name:"分类",
+               //    分类形状
+               icon: 'circle',
+               //    文本颜色
+               textStyle: {
+                   color: '#333',
+               }
+              },
+              "折线图","柱状图",
+          ],
+            // 距离左侧位置
+            // left: 200,
+        },
+        grid:{
+          top: 100,
+          right: 100,
+          bottom: 100,
+          left: 100,
+        },
+        toolbox: {
+          feature: {
+              // 保存图片
+              saveAsImage: {},
+              // 重载数据
+              restore: {},
+              // 区域缩放还原
+              dataZoom: {
+                  yAxisIndex: "none"
+              }
+          }
+        },
+        dataZoom: [
+            {
+                show: true,
+                start: 0,
+                end: 100,
+            }
+        ],
+        // 数据
+        series: [
+            {
+                name: "分类",
+                type: 'pie',
+                center: ['65%', '60'],
+                radius: 35,
+                encode:
+                    {
+                        // dataset里第3列
+                        itemName: 3,
+                        // dataset里第3列
+                        value: 4
+                    }
+            },
+            {
+                name: "折线图",
+                type: 'line',
+                encode: {
+                    // dataset里的
+                    x: 0,
+                    y: 1,
+                }
+            },
+            {
+                name: "柱状图",
+                type: 'bar',
+                encode: {
+                    x: 0,
+                    y: 1,
+                }
+            }
+        ]
+    })
+
+</script>
+</body>
+</html>
